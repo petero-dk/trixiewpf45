@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Strings>
+  <Item Key="Registering">
+    <String>Trixie will be registered.</String>
+    <String Language="ja-JP">Trixieを登録します。</String>
+  </Item>
+  <Item Key="Registered">
+    <String>Trixie has been registered.</String>
+    <String Language="ja-JP">Trixieを登録しました。</String>
+  </Item>
+  <Item Key="RegisterFail">
+    <String>Trixie could not been registered.</String>
+    <String Language="ja-JP">Trixieを登録できませんでした。</String>
+  </Item>
+  <Item Key="Unregistering">
+    <String>Trixie will be unregistered.</String>
+    <String Language="ja-JP">Trixieの登録を解除します。</String>
+  </Item>
+  <Item Key="Unregistered">
+    <String>Trixie has been unregistered.</String>
+    <String Language="ja-JP">Trixieの登録を解除しました。</String>
+  </Item>
+  <Item Key="UnregisterFail">
+    <String>Trixie could not been unregistered.</String>
+    <String Language="ja-JP">Trixieの登録を解除できませんでした。</String>
+  </Item>
+  <Item Key="WinTitle">
+    <String>Managing User Scripts</String>
+    <String Language="ja-JP">ユーザースクリプトの管理</String>
+  </Item>
+</Strings>
