@@ -1,23 +1,23 @@
 ﻿<!-- ****************************************************************************
-	Trixie - Tricks for IE
-	オプションダイアログ
+    Trixie - Tricks for IE
+    オプションダイアログ
 
-	WPF簡易MVVMだから好きにいじれる
+    WPF簡易MVVMだから好きにいじれる
 
-	Copyright (C) 2013 Mizutama(水玉 ◆qHK1vdR8FRIm)
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
+    Copyright (C) 2013 Mizutama(水玉 ◆qHK1vdR8FRIm)
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 **************************************************************************** -->
 <Window x:Class="Trixie.OptionDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -32,69 +32,79 @@
             <Binding Source="{x:Static app:App.UserAgent}" />
         </MultiBinding>
     </Window.Title>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="3*" />
-        </Grid.ColumnDefinitions>
 
-        <ListBox x:Name="SettingList" Grid.Column="0" Margin="4"
-                 ItemsSource="{Binding Settings}"
-                 >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding Enabled}" />
-                        <TextBlock Text="{Binding Script.Name}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+    <TabControl >
+        <TabItem Header="Scripts">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
 
-        <GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" />
+                <ListBox x:Name="SettingList" Grid.Column="0" Margin="4"
+                 ItemsSource="{Binding Settings}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding Enabled}" />
+                                <TextBlock Text="{Binding Script.Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
-        <Grid Grid.Column="2" Margin="4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Margin="4">Namespace</TextBlock>
-            <TextBox   Grid.Row="0" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
+                <GridSplitter Grid.Column="1" Width="3" VerticalAlignment="Stretch" />
+
+                <Grid Grid.Column="2" Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Margin="4">Namespace</TextBlock>
+                    <TextBox   Grid.Row="0" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
                        Text="{Binding SelectedItem.Script.Namespace,ElementName=SettingList,Mode=OneWay}"
                        />
-            <TextBlock Grid.Row="1" Grid.Column="0" Margin="4">Description</TextBlock>
-            <TextBox   Grid.Row="1" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="4">Description</TextBlock>
+                    <TextBox   Grid.Row="1" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
                        Text="{Binding SelectedItem.Script.Description,ElementName=SettingList,Mode=OneWay}"
                        />
-            <TextBlock Grid.Row="2" Grid.Column="0" Margin="4">Includes</TextBlock>
-            <TextBox   Grid.Row="2" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="4">Includes</TextBlock>
+                    <TextBox   Grid.Row="2" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
                        Text="{Binding SelectedItem.Script.Includes,ElementName=SettingList,Mode=OneWay}"
                        />
-            <TextBlock Grid.Row="3" Grid.Column="0" Margin="4">Excludes</TextBlock>
-            <TextBox   Grid.Row="3" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="4">Excludes</TextBlock>
+                    <TextBox   Grid.Row="3" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
                        Text="{Binding SelectedItem.Script.Excludes,ElementName=SettingList,Mode=OneWay}"
                        />
-            <TextBlock Grid.Row="4" Grid.Column="0" Margin="4">File</TextBlock>
-            <TextBox   Grid.Row="4" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
+                    <TextBlock Grid.Row="4" Grid.Column="0" Margin="4">File</TextBlock>
+                    <TextBox   Grid.Row="4" Grid.Column="1" Margin="4" IsReadOnly="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap"
                        Text="{Binding SelectedItem.Script.Path,ElementName=SettingList,Mode=OneWay}"
                        />
-            <Button Grid.Row="5" Grid.Column="0" Width="60" Margin="4,2,4,2" Click="Reload_Click">Reload</Button>
-            <StackPanel Grid.Row="5" Grid.Column="1"
+                    <Button Grid.Row="5" Grid.Column="0" Width="60" Margin="4,2,4,2" Click="Reload_Click">Reload</Button>
+                    <StackPanel Grid.Row="5" Grid.Column="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         >
-                <Button Width="60" Margin="4,2,4,2" Click="OK_Click">OK</Button>
-                <Button Width="60" Margin="4,2,4,2" Click="Cancel_Click">CANCEL</Button>
+                        <Button Width="60" Margin="4,2,4,2" Click="OK_Click">OK</Button>
+                        <Button Width="60" Margin="4,2,4,2" Click="Cancel_Click">CANCEL</Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Settings">
+            <StackPanel >
+                <Label Content="Script settings" />
+                <CheckBox Content="Refresh scripts on browser refresh" IsChecked="True" IsEnabled="False" />
             </StackPanel>
-        </Grid>
-    </Grid>
+        </TabItem>
+    </TabControl>
 </Window>
